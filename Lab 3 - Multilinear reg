@@ -1,0 +1,17 @@
+weather<-read.csv("D:/6th Sem Works/A2- EDA/LAB/Lab3/weatherData.csv");
+head(weather)
+library(dplyr)
+input<-
+weather[,c("Formatted.Date","Temperature","ApparentTemperature","Humidity","WindSp
+eed","WindBearing","Visibility")]
+input=sample_n(input,200)
+head(input)
+#Correaltion between dependent and inpedent variable 
+cor(input$Temperature,input$ApparentTemperature)
+cor(input$Temperature,input$Humidity)
+cor(input$Temperature,input$WindSpeed) #remove from the model 
+cor(input$Temperature,input$WindBearing) #remove from the model 
+cor(input$Temperature,input$Visibility) #remove 
+model <- lm(Temperature~Humidity+ApparentTemperature, data =input)
+print(model)
+summary(model)

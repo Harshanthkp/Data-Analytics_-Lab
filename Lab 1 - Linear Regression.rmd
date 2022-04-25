@@ -1,0 +1,27 @@
+library(dplyr)
+data <- mtcars
+dataset <- sample_n(data,15)
+dataset
+x <- dataset$wt
+y <- dataset$mpg
+model <- lm(y~x,dataset)
+summary(model)
+cor.test(x,y)
+par(mar=c(1,1,1,1))
+plot(x,y,main = "Scatter",xlab = "weight",ylab = "mpg")
+abline(model,col='red')
+
+
+-------------------------------
+
+setwd("D:/6th Sem Works/A2- EDA")
+data1 <- read.csv("data.csv")
+head(data1)
+data1 <- sample_n(data1,100)
+x <- as.numeric(data1$Height)
+y <- as.numeric(data1$Weight)
+plot(x,y)
+model1 <- lm(y~x)
+summary(model1)
+cor.test(x,y)
+abline(model1,col="red")
